@@ -7,7 +7,6 @@ import skvideo.io
 from pathlib import Path
 from typing import List
 import platform
-import signal
 import shutil
 import argparse
 import onnxruntime
@@ -49,8 +48,6 @@ def read_frames(folder_path, glob='*'):
 
 
 def parse_args(source_path, target_path, output_path) -> None:
-    signal.signal(signal.SIGINT, lambda signal_number, frame: destroy())
-
     args = Munch({
         'source_path': '',
         'target_path': '',
